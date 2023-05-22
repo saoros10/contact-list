@@ -20,6 +20,17 @@ function nuevoContacto (id,nombre,apellido,telefono,ubicacion){
     listaContacto.push(contacto);
 }
 
+function actualizaContacto(nombre, propiedad, nuevoValor) {
+    let contacto = listaContacto.find(contacto => contacto.nombre === nombre);
+
+    if (contacto) {
+      contacto[propiedad] = nuevoValor;
+      console.log(`Se ha cambiado "${propiedad}" del contacto "${nombre}" satisfactoriamente.`);
+    } else {
+      console.log(`No se encontró ningún contacto con el nombre "${nombre}".`);
+    }
+  }
+
 function borraContacto(nombre) {
     const position = listaContacto.findIndex(contacto => contacto.nombre === nombre);
 
@@ -31,9 +42,6 @@ function borraContacto(nombre) {
     }
   }
 
-console.log(listaContacto);
-  
-
 function imprimir (){
     console.log(listaContacto);
 }
@@ -41,6 +49,10 @@ function imprimir (){
 
 nuevoContacto(15,"Xavi","Alonso","+20 4448484","Madrid","Avenida Vuelta roja 78 00");
 nuevoContacto(11,"Zinedine","Zidane","+33 8749117434","Monco","La plce Maite 10 22");
+imprimir();
+
+actualizaContacto("Lionel", "id", 32);
+actualizaContacto("Cristiano","apellido", "CR7");
 imprimir();
 
 borraContacto("Eden")
